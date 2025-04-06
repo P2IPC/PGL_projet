@@ -1,0 +1,60 @@
+ssh -i ~/Bitcoin-key.pem ubuntu@13.48.249.46
+git clone https://github.com/P2IPC/PGL_projet.git
+cd PGL_projet
+tmux attach -t dashboard
+
+
+
+python3 dashboard.py
+
+
+
+rm daily_report.sh
+nano daily_report.sh
+
+
+rm dashboard.py
+
+
+
+
+
+
+
+Créer le fichier du script Bash :
+nano scraper.sh
+
+Lancer le script pour tester :
+./scraper.sh
+
+
+*/5 * * * * /home/edgar/projet_git/scraper.sh
+
+tail -n 10 /home/edgar/projet_git/cron.log
+cat projet.csv | tail -n 10
+python3 dashboard.py
+nano dashboard.py
+http://localhost:8050
+
+
+Installe tmux :
+sudo apt update && sudo apt install tmux -y
+
+Lance une session tmux et exécute ton Dashboard :
+tmux new -s dashboard
+cd /home/edgar/projet_git
+python3 dashboard.py
+
+
+
+
+AJOUTER SUR GIT HUB
+git config --global user.name "EdgarCourqueux"
+git config --global user.email "edgarcourq@gmail.com"
+cd /home/edgar/projet_git
+git status
+git init
+git remote add origin https://github.com/EdgarCourqueux/GitProject.git
+git remote -v
+git add .
+git status

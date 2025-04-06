@@ -293,7 +293,7 @@ def update_dashboard(n):
         subprocess.run(["/bin/bash", os.path.join(BASE_PATH, "daily_report.sh")], check=True)
 
     except Exception as e:
-        print(f"❌ Script execution error: {e}")
+        print(f"Script execution error: {e}")
     
     # Load data for graph
     df = load_data()

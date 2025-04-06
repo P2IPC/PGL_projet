@@ -48,13 +48,3 @@ python3 dashboard.py
 
 
 
-AJOUTER SUR GIT HUB
-git config --global user.name "EdgarCourqueux"
-git config --global user.email "edgarcourq@gmail.com"
-cd /home/edgar/projet_git
-git status
-git init
-git remote add origin https://github.com/EdgarCourqueux/GitProject.git
-git remote -v
-git add .
-git status

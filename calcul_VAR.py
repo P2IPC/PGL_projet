@@ -7,7 +7,7 @@ def calculate_var(df, confidence=0.95, window=14):
     df = df.copy()
     df['return'] = df['Price'].pct_change()
     
-    # Filter out NaN values
+    #NaN
     returns = df['return'].dropna()
     
     if len(returns) < 2:
@@ -16,6 +16,6 @@ def calculate_var(df, confidence=0.95, window=14):
     # Calculate VaR
     var = np.percentile(returns, 100 * (1 - confidence))
     
-    # Convert to percentage and make it positive for display
+    # Convert to percentage 
     var_pct = abs(var * 100)
     return var_pct 

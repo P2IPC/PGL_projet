@@ -225,7 +225,7 @@ def train_model_and_predict(df):
             
             if 'rolling_mean_5' in current_data:
                 current_data['rolling_mean_5'] = (current_data['lag_1'] + current_data.get('lag_2', 0) + current_data.get('lag_3', 0) + 
-                                                 current_data.get('lag_4', 0) + current_data.get('lag_5', 0)) / 5
+                                                current_data.get('lag_4', 0) + current_data.get('lag_5', 0)) / 5
             
             # Calculer la variation de prix basée sur notre prédiction
             if 'price_change_1' in current_data:
@@ -629,13 +629,17 @@ def update_timeframe(n15, n30, n60, n120, n240, n480, n720, n1440, nall):
      Input("selected-timeframe", "children")]
 )
 def update_dashboard(n, minutes_limit):
+    logger.info(f"Update dashboard called: n={n}, minutes_limit={minutes_limit}")
     # Convertir la chaîne en entier
     minutes_limit = int(minutes_limit)
     
     try:
+        logger.info("Attempting to run scraper.sh")
         subprocess.run(["/bin/bash", os.path.join(BASE_PATH, "scraper.sh")], check=True)
+        logger.info("Attempting to run daily_report.sh")
         subprocess.run(["/bin/bash", os.path.join(BASE_PATH, "daily_report.sh")], check=True)
     except Exception as e:
+        logger.error(f"Script execution error: {e}")
         print(f"❌ Script execution error: {e}")
     
     # Reste du code inchangé...

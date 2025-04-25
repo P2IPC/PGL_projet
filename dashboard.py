@@ -259,27 +259,6 @@ def train_model_and_predict(df):
     }
     
     return predictions_df, eval_metrics
-    
-    # Créer un DataFrame avec les prévisions
-    predictions_df = pd.DataFrame({
-        'Timestamp': future_timestamps,
-        'Predicted_Price': future_predictions
-    })
-    
-    # Calculer les métriques d'évaluation sur les données connues
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-    model.fit(X_train, y_train)
-    y_pred = model.predict(X_test)
-    mae = mean_absolute_error(y_test, y_pred)
-    rmse = np.sqrt(mean_squared_error(y_test, y_pred))
-    
-    eval_metrics = {
-        'MAE': mae,
-        'RMSE': rmse,
-        'Feature_Importance': dict(zip(X.columns, model.feature_importances_))
-    }
-    
-    return predictions_df, eval_metrics
 
 def filter_data_by_range(df, minutes_limit):
     """Filter data to show only the specified number of minutes."""

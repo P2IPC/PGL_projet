@@ -616,7 +616,12 @@ def update_timeframe(n15, n30, n60, n120, n240, n480, n720, n1440, nall):
         button_classes["timeframe-1440"],
         button_classes["timeframe-all"]
     )
-
+# Add at top of file
+import logging
+logging.basicConfig(level=logging.INFO, 
+                   format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                   filename='app.log')
+logger = logging.getLogger(__name__)
 # Modifier le callback principal pour utiliser la valeur stockée dans selected-timeframe
 @app.callback(
     [Output("price-graph", "figure"),
